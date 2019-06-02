@@ -1,4 +1,4 @@
-provider "google" {
+ provider "google" {
   credentials = "${file("hitmeplease.json")}"
   project     = "eng-flux-242401"
   region      = "asia-southeast1"
@@ -26,7 +26,7 @@ resource "google_compute_instance" "tf_instance" {
     access_config {}
   }
 
-  tags = ["my-web"]
+  tags = ["my-web", "http-server", "https-server"]
 }
 
 output "ip" {
