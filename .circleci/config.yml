@@ -25,6 +25,9 @@ jobs:
             docker build -t prontobacon/hitme:live .
             docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
             docker push prontobacon/hitme:live
+      - add_ssh_keys:
+          fingerprints:
+            - "e4:2b:66:70:d2:c3:00:6d:5a:12:16:54:04:17:4e:8d"
       - run:
           name: deploy
           command: |
