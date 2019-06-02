@@ -13,6 +13,7 @@ jobs:
             python3 -m venv ENV
             . ENV/bin/activate
             pip install -r requirements.txt
+            pip install ansible
       - run:
           name: run unit tests
           command: |
@@ -24,4 +25,10 @@ jobs:
             docker build -t prontobacon/hitme:live .
             docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
             docker push prontobacon/hitme:live
+      - run:
+          name: deploy
+          command: |
+            . ENV/bin/activate
+            cd ansible
+            ansible-playbook -i hosts deploy.yml --extra-vars "project_path=~/hit-me-please username=bacon"
 
