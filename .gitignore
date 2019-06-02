@@ -2,3 +2,5 @@ ENV
 __pycache__
 .vscode
 *.sqlite3
+terraform/*
+!terraform/*.tf
